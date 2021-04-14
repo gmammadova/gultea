@@ -72,46 +72,8 @@ class Product {
     }
 }
 
-const allProducts = [
-    new Product(
-        1,
-        "Energizing Earl Grey blend",
-        "The Energizing Earl Grey blend is our special mix of high quality Early Grey tea " +
-            "with mountain thyme. We love it and are sure you will love it too. " +
-            "It is perfect beverage to start the day with a very productive morning.",
-        15.99,
-        [3, 4, 1, 5, 5, 5],
-        ["images/earl-grey.jpg", "images/wakup.jpg"],
-        true
-    ),
-    new Product(
-        2,
-        "Calming Camomile",
-        "todo",
-        12,
-        [4, 5],
-        ["images/camomile.jpg"],
-        true
-    ),
-    new Product(
-        3,
-        "Wakeup! Tea",
-        "todo",
-        14.99,
-        [3, 3, 3, 3, 4, 5, 4, 4, 3, 4, 5],
-        ["images/wakup.jpg"],
-        false,
-    ),
-    new Product(
-        4,
-        "Mama's Helper",
-        "todo",
-        18.99,
-        [5, 5, 5],
-        ["images/pregnancy.jpg"],
-        true
-    )
-]
+// This is fed by PHP using through setAllProducts function.
+var allProducts = []
 
 function showProducts(products) {
     var productsStr = ''
@@ -184,4 +146,21 @@ function updatePrice() {
     document.getElementById("product-price").innerText = (product.price * quantity).toFixed(2);
 
     return false;
+}
+
+function setAllProducts(products) {
+    newAllProducts = []
+
+    for (let product of products) {
+        newAllProducts.push(new Product(
+            product.id,
+            product.title,
+            product.description,
+            product.price,
+            product.reviews,
+            product.images,
+            product.is_featured));
+    }
+
+    allProducts = newAllProducts;
 }

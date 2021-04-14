@@ -22,7 +22,7 @@
         $file_name = $product_image_file['name'];
         $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
         $file_tmp_name = $product_image_file['tmp_name'];
-        $image_id = $product_dao->create_image($product_id, $file_name);
+        $image_id = $product_dao->create_image($product_id, $file_name, $file_extension);
         $upload_path = getcwd() . "/images/products/" . $image_id . '.' . $file_extension;
         $is_uploaded = move_uploaded_file($file_tmp_name, $upload_path);
 
@@ -59,7 +59,7 @@
             </a>
             <ul>
                 <li>
-                    <form action="search.html" method="GET">
+                    <form action="search.php" method="GET">
                         <input type="text" placeholder="search..." id="txt-search" name="search" />
                         <button type="submit" id="btn-search">Search</button>
                     </form>
@@ -100,7 +100,7 @@
                 <textarea name="product_description" rows="8" cols="50"></textarea>
 
                 <label for="product_price">Product price</label>
-                <input type="number" name="product_price"/>
+                <input type="number" name="product_price" step="0.01" />
 
                 <div>
                     <input type="checkbox" name="product_is_featured"/>

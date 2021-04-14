@@ -1,5 +1,3 @@
-<!-- MVP.css quickstart template: https://github.com/andybrewer/mvp/ -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +6,13 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/515b3cf6cd.js" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+        setAllProducts(<?php
+            require_once('./dao/product_dao.php');
+            $product_dao = new ProductDAO();
+            echo json_encode($product_dao->get_all(), JSON_HEX_TAG);
+        ?>);
+    </script>
 
     <meta charset="utf-8">
     <meta name="description" content="A cup full of love">
