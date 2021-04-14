@@ -60,7 +60,7 @@ class Product {
 
     toHTML() {
         var html = '<aside class="product">';
-        html += '<a href="product.html?id=' + this.id + '">';
+        html += '<a href="product.php?id=' + this.id + '">';
         html += '<img src="' + this.images[0] + '" />';
         html += '<div>'
         html += '<p>' + this.title + '</p>';

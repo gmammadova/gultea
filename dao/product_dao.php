@@ -21,11 +21,12 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $images_result = $this->mysqli->query('SELECT CONCAT("images/products/", id, ".", extension) FROM images WHERE product_id=' . $row['id']);
-                    $row['images'] = $images_result->fetch_all();
+                    $row['images'] = array_merge([], ...$images_result->fetch_all());
                     $images_result->free();
 
                     $reviews_result = $this->mysqli->query('SELECT rating FROM reviews WHERE product_id=' . $row['id']);
-                    $row["reviews"] = $reviews_result->fetch_all();
+                    $reviewsStr = array_merge([], ...$reviews_result->fetch_all());
+                    $row["reviews"] = array_map('intval', $reviewsStr);
                     $reviews_result->free();
 
                     array_push($final_result, $row);

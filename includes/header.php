@@ -1,5 +1,3 @@
-<!-- MVP.css quickstart template: https://github.com/andybrewer/mvp/ -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +6,13 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/515b3cf6cd.js" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+        setAllProducts(<?php
+            require_once('./dao/product_dao.php');
+            $product_dao = new ProductDAO();
+            echo json_encode($product_dao->get_all(), JSON_HEX_TAG);
+        ?>);
+    </script>
 
     <meta charset="utf-8">
     <meta name="description" content="A cup full of love">
@@ -19,7 +24,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.html">
+            <a href="index.php">
                 <img alt="Logo" src="images/logo-icon.png" height="70">
                 <img src="images/logo-text.png" height="50">
             </a>
@@ -45,23 +50,3 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <hr>
-        <article class="product" id="product-details">
-            <script type="text/javascript">showProductDetails()</script>
-        </article>
-    </main>
-    <footer>
-        <hr>
-        <nav>
-            <ul>
-                <li>© 2021</li>
-                <li>|</li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
-    </footer>
-</body>
-
-</html>
