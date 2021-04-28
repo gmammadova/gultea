@@ -1,0 +1,5 @@
+The most challenging part was to figure out passing data from PHP to Javascript. As from part 2 I had everything done using Javascript,
+all I needed was to pass products from database using PHP to my Javascript array "allProducts". I also needed to include reviews and images for every
+product. I used an associative array to collect all data, then used PHP's "json_encode" function to encode the data as JSON and pass it as an argument
+to "setAllProducts" Javascript function in the beginning of every page within <script> tag. Then in "setAllProducts" Javascript function I iterate through
+all products and feed "allProducts" as my Javascript logic expects. The rest worked same as part 2.
